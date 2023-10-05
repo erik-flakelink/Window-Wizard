@@ -56,18 +56,22 @@ def UnlockMargins():
     refresh()
 
 def Update():
+    global my_window
     global marginX
     global marginY
     global entryX
     global entryY
-    marginX = entryX.get()
-    if margin_lock == False:
-        marginY = entryY.get()
-    else:
-        marginY = entryX.get()
-    global my_window
+    global setup2
     try:
+        marginX = entryX.get()
+        if margin_lock == False:
+            marginY = entryY.get()
+        else:
+            marginY = entryX.get()
         my_window.geometry(f"{marginX}x{marginY}")
+        my_window.resizable(False, False)
+        my_window.config(bg = custom_bg)
+        my_window.title("NewWindow (PREVIEW)")
     except:
         my_window = Tk()
         marginX = entryX.get()
@@ -76,6 +80,9 @@ def Update():
         else:
             marginY = entryX.get()
         my_window.geometry(f"{marginX}x{marginY}")
+        my_window.resizable(False, False)
+        my_window.config(bg = custom_bg)
+        my_window.title("NewWindow (PREVIEW)")
     
 def refresh():
     global setup2
